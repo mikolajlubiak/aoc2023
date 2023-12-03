@@ -1,6 +1,5 @@
 import re
 import math
-cubes = {'red': 12, 'green': 13, 'blue': 14}
 max_cubes_sum = 0
 with open('input.txt', 'r') as input:
     data = input.read().splitlines()
