@@ -33,7 +33,7 @@ with open('input.txt', 'r') as input:
                 if properties[type[0]] in range(source, source+length): # If the source is in the scope
                     properties[type[1]] = destination+(properties[type[0]]-source) # Update the corresponding property (like soil, or location)
                     seeds[seed].update(properties)
-                else:
+                elif properties[type[1]] == -1:
                     properties[type[1]] = seeds[seed][type[0]]
                     seeds[seed].update(properties)
 
