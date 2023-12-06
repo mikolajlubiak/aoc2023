@@ -1,5 +1,4 @@
 import re
-
 with open('input.txt', 'r') as input:
     data = input.read().split('\n\n') # Split the input by \n\n to get the seeds category, the seed-to-soil map, and so on
 
@@ -34,12 +33,9 @@ with open('input.txt', 'r') as input:
                 if properties[type[0]] in range(source, source+length): # If the source is in the scope
                     properties[type[1]] = destination+(properties[type[0]]-source) # Update the corresponding property (like soil, or location)
                     seeds[seed].update(properties)
-
-    # Go over every seed. If the property value is -1, then change to property value to the value of seed.
-    for seed in seeds:
-        for property in seeds[seed]:
-            if seeds[seed][property] == -1:
-                seeds[seed][property] = seeds[seed]['seed']
+                else:
+                    properties[type[1]] = seeds[seed][type[0]]
+                    seeds[seed].update(properties)
 
     lowest_location = min(seeds[seed]['location'] for seed in seeds) # Check what is the lowest location
     print(lowest_location)
